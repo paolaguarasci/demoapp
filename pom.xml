@@ -15,6 +15,7 @@
     <description>Esercizio REST API</description>
     <properties>
         <java.version>20</java.version>
+        <start-class>it.pingflood.florencedemo.FlorencedemoApplication</start-class>
     </properties>
     <dependencies>
         <dependency>
@@ -24,6 +25,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>4.1</version>
         </dependency>
         <dependency>
             <groupId>org.modelmapper</groupId>
@@ -52,6 +58,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 
     <build>
         <plugins>

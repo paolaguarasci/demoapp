@@ -37,6 +37,12 @@ public class UserController {
   public ResponseEntity<UserResponse> createUser(@RequestBody UserCreate userCreate) {
     return ResponseEntity.ok(userService.saveUser(userCreate));
   }
+
+//  @PostMapping("/load-from-csv")
+//  @ResponseStatus(HttpStatus.CREATED)
+//  public ResponseEntity<List<UserResponse>> createUserFromCSV(@RequestBody UserCreate userCreate) {
+//    return ResponseEntity.ok(userService.saveUser(userCreate));
+//  }
   
   @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)

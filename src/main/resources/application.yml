@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3306/florence
+    url: ${FLORENCE_APP_DB_URI}
     username: ${FLORENCE_APP_DB_USERNAME}
     password: ${FLORENCE_APP_DB_PASSWORD}
     driver-class-name: org.mariadb.jdbc.Driver

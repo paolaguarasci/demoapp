@@ -58,6 +58,13 @@ public class UserServiceImpl implements UserService {
   }
   
   @Override
+  public List<UserResponse> saveFromCSV() {
+    
+    return null;
+  }
+  
+  
+  @Override
   public void deleteUser(Long id) {
     userRepository.delete(userRepository.findById(id).orElseThrow());
   }

@@ -16,5 +16,7 @@ public interface UserService {
   
   UserResponse updateUser(Long id, UserUpdate userUpdate);
   
+  List<UserResponse> saveFromCSV();
+  
   void deleteUser(Long id);
 }

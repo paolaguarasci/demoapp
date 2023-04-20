@@ -1,5 +1,19 @@
-spring.datasource.url=jdbc:mysql://app_db:3306/java_to_dev_app_db
-spring.datasource.username=java_to_dev
-spring.datasource.password=nE5kMc7JCGNqwDQM
-spring.jpa.hibernate.ddl-auto=update
-spring.datasource.initialization-mode=always
+version: "3.7"
+services:
+  user_service:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+  database:
+    image: "mariadb:latest"
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: florence
+      MYSQL_USER: florence
+      MYSQL_PASSWORD: florence
+      MYSQL_ROOT_PASSWORD: florence

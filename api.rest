@@ -20,11 +20,11 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:8080/api/v1/user/2
+PUT http://localhost:8080/api/v1/user/3
 Content-Type: application/json
 
 {
-  "id": 2,
+  "id": 3,
   "firstName": "Paola",
   "secondName": "Rossi",
   "email": "ciao@ciaone.com",
