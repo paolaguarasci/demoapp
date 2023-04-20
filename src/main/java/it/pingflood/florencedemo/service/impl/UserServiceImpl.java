@@ -1,6 +1,20 @@
 package it.pingflood.florencedemo.service.impl;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.config.Configuration;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.opencsv.CSVReader;
+
 import it.pingflood.florencedemo.data.User;
 import it.pingflood.florencedemo.data.dto.UserCreate;
 import it.pingflood.florencedemo.data.dto.UserResponse;
@@ -8,24 +22,9 @@ import it.pingflood.florencedemo.data.dto.UserUpdate;
 import it.pingflood.florencedemo.data.vo.Address;
 import it.pingflood.florencedemo.data.vo.Email;
 import it.pingflood.florencedemo.data.vo.FirstName;
-import it.pingflood.florencedemo.data.vo.SecondName;
+import it.pingflood.florencedemo.data.vo.LastName;
 import it.pingflood.florencedemo.repository.UserRepository;
 import it.pingflood.florencedemo.service.UserService;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.config.Configuration;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.MultiValueMap;
-import org.springframework.util.ResourceUtils;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Transactional
 @Service
@@ -93,7 +92,7 @@ public class UserServiceImpl implements UserService {
   private User row2User(String[] row) {
     return User.builder()
       .firstName(FirstName.builder().firstName(row[0]).build())
-      .secondName(SecondName.builder().secondName(row[1]).build())
+      .lastName(LastName.builder().lastName(row[1]).build())
       .email(Email.builder().email(row[2]).build())
       .address(Address.builder()
         .line1(row[3])

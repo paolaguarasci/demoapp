@@ -6,4 +6,4 @@
 4. [x] uso di un DB a piacere
 5. [x] creazione di una immagine Docker del progetto e utilizzo di Docker per il DB
 6. [x] gestione del progetto con Git
-7. [ ] esporre una API che prenda in input un file csv contenente le informazioni sugli User sopra descritti e li memorizzi nel DB
+7. [x] esporre una API che prenda in input un file csv contenente le informazioni sugli User sopra descritti e li memorizzi nel DB

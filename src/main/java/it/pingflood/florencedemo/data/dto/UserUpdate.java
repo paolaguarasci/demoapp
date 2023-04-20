@@ -4,7 +4,7 @@ public class UserUpdate {
   public Long id;
   public String firstName;
   
-  public String secondName;
+  public String lastName;
   
   public String email;
   public String addressLine1;

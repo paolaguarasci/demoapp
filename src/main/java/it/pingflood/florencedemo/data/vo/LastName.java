@@ -7,11 +7,11 @@ import lombok.Value;
 @Value
 @Builder
 @NoArgsConstructor(force = true)
-public class SecondName {
-  String secondName;
+public class LastName {
+  String lastName;
   
-  public SecondName(String secondName) {
+  public LastName(String lastName) {
     // TODO Validation
-    this.secondName = secondName;
+    this.lastName = lastName;
   }
 }

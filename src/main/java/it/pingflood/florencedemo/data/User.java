@@ -1,14 +1,27 @@
 package it.pingflood.florencedemo.data;
 
+import java.util.Objects;
+
+import org.hibernate.Hibernate;
+
 import it.pingflood.florencedemo.data.vo.Address;
 import it.pingflood.florencedemo.data.vo.Email;
 import it.pingflood.florencedemo.data.vo.FirstName;
-import it.pingflood.florencedemo.data.vo.SecondName;
-import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.Hibernate;
-
-import java.util.Objects;
+import it.pingflood.florencedemo.data.vo.LastName;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
@@ -28,8 +41,8 @@ public class User {
   private FirstName firstName;
   
   @Embedded
-  @AttributeOverrides(@AttributeOverride(name = "secondName", column = @Column(name = "SECOND_NAME")))
-  private SecondName secondName;
+  @AttributeOverrides(@AttributeOverride(name = "lastName", column = @Column(name = "LAST_NAME")))
+  private LastName lastName;
   
   @Embedded
   @AttributeOverrides(@AttributeOverride(name = "email", column = @Column(name = "EMAIL")))
@@ -47,7 +60,7 @@ public class User {
   
   public void update(User other) {
     this.firstName = other.firstName;
-    this.secondName = other.secondName;
+    this.lastName = other.lastName;
     this.email = other.email;
     this.address = other.address;
   }

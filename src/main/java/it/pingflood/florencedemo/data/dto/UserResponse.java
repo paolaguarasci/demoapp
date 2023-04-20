@@ -6,7 +6,7 @@ public class UserResponse {
   
   public String firstName;
   
-  public String secondName;
+  public String lastName;
   
   public String email;
   public String addressLine1;

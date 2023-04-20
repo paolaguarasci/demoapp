@@ -3,7 +3,7 @@ package it.pingflood.florencedemo.data.dto;
 public class UserCreate {
   public String firstName;
   
-  public String secondName;
+  public String lastName;
   
   public String email;
   public String addressLine1;

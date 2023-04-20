@@ -1,16 +1,17 @@
 package it.pingflood.florencedemo.config;
 
-import it.pingflood.florencedemo.data.User;
-import it.pingflood.florencedemo.data.vo.Address;
-import it.pingflood.florencedemo.data.vo.Email;
-import it.pingflood.florencedemo.data.vo.FirstName;
-import it.pingflood.florencedemo.data.vo.SecondName;
-import it.pingflood.florencedemo.repository.UserRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import it.pingflood.florencedemo.data.User;
+import it.pingflood.florencedemo.data.vo.Address;
+import it.pingflood.florencedemo.data.vo.Email;
+import it.pingflood.florencedemo.data.vo.FirstName;
+import it.pingflood.florencedemo.data.vo.LastName;
+import it.pingflood.florencedemo.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
@@ -35,7 +36,7 @@ public class InitDB implements CommandLineRunner {
     
     userRepository.saveAndFlush(User.builder()
       .firstName(new FirstName("Paola"))
-      .secondName(new SecondName("Rossi"))
+      .lastName(new LastName("Rossi"))
       .email(new Email("a@b.com"))
       .address(Address.builder()
         .line1("Via dei Mille, 0")
