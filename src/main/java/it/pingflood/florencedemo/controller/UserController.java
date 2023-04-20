@@ -4,9 +4,11 @@ import it.pingflood.florencedemo.data.dto.UserCreate;
 import it.pingflood.florencedemo.data.dto.UserResponse;
 import it.pingflood.florencedemo.data.dto.UserUpdate;
 import it.pingflood.florencedemo.service.UserService;
+import lombok.SneakyThrows;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -22,10 +24,12 @@ public class UserController {
   
   @GetMapping("/{id}")
   public ResponseEntity<UserResponse> getOneUserByID(@PathVariable Long id) {
+    
     return ResponseEntity.ok(userService.getUser(id));
   }
   
   
+  @SneakyThrows
   @GetMapping
   @ResponseStatus(HttpStatus.OK)
   public ResponseEntity<List<UserResponse>> getAllUsers() {
@@ -38,11 +42,11 @@ public class UserController {
     return ResponseEntity.ok(userService.saveUser(userCreate));
   }
 
-//  @PostMapping("/load-from-csv")
-//  @ResponseStatus(HttpStatus.CREATED)
-//  public ResponseEntity<List<UserResponse>> createUserFromCSV(@RequestBody UserCreate userCreate) {
-//    return ResponseEntity.ok(userService.saveUser(userCreate));
-//  }
+  @PostMapping(value = "/csv", headers = ("content-type=multipart/form-data"))
+  @ResponseStatus(HttpStatus.CREATED)
+  public ResponseEntity<List<UserResponse>> createUserFromCSV(@RequestParam("file") MultipartFile file) throws Exception {
+    return ResponseEntity.ok(userService.saveFromCSV(file));
+  }
   
   @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)

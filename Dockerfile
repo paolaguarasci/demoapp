@@ -1,3 +1,4 @@
+# mvn package -Dmaven.test.skip=true
 FROM openjdk:20-jdk
 VOLUME /main-app
 ADD ./target/florencedemo-0.0.1-SNAPSHOT.jar app.jar
