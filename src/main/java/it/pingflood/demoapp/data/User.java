@@ -5,6 +5,7 @@ import it.pingflood.demoapp.data.vo.Email;
 import it.pingflood.demoapp.data.vo.FirstName;
 import it.pingflood.demoapp.data.vo.LastName;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -21,21 +22,26 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
+  @Valid
   private Long id;
   
   @Embedded
+  @Valid
   @AttributeOverrides(@AttributeOverride(name = "firstName", column = @Column(name = "FIRST_NAME")))
   private FirstName firstName;
   
   @Embedded
+  @Valid
   @AttributeOverrides(@AttributeOverride(name = "lastName", column = @Column(name = "LAST_NAME")))
   private LastName lastName;
   
   @Embedded
+  @Valid
   @AttributeOverrides(@AttributeOverride(name = "email", column = @Column(name = "EMAIL")))
   private Email email;
   
   @Embedded
+  @Valid
   @AttributeOverrides(value = {
     @AttributeOverride(name = "line1", column = @Column(name = "ADDRESS_LINE1")),
     @AttributeOverride(name = "line2", column = @Column(name = "ADDRESS_LINE2")),
@@ -45,7 +51,7 @@ public class User {
   })
   private Address address;
   
-  public void update(User other) {
+  public void update(@Valid User other) {
     this.firstName = other.firstName;
     this.lastName = other.lastName;
     this.email = other.email;

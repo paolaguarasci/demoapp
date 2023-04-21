@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
   
   private final UserRepository userRepository;
-  private ModelMapper modelMapper;
+  private final ModelMapper modelMapper;
   
   public UserServiceImpl(UserRepository userRepository) {
     this.modelMapper = new ModelMapper();
@@ -55,13 +55,11 @@ public class UserServiceImpl implements UserService {
   
   @Override
   public UserResponse saveUser(UserCreate userCreate) {
-    // TODO Un minimo di validazione...
     return modelMapper.map(userRepository.save(modelMapper.map(userCreate, User.class)), UserResponse.class);
   }
   
   @Override
   public UserResponse updateUser(Long id, UserUpdate userUpdate) {
-    // TODO Un minimo di validazione...
     if (!Objects.equals(userUpdate.id, id)) {
       throw new RuntimeException("Update error");
     }

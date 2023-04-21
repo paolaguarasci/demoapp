@@ -10,4 +10,5 @@ public class UserCreate {
   public String addressLine2;
   public String addressPostalCode;
   public String addressCity;
+  public String addressState;
 }

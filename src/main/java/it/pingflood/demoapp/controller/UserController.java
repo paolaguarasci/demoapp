@@ -3,7 +3,10 @@ package it.pingflood.demoapp.controller;
 import it.pingflood.demoapp.data.dto.UserCreate;
 import it.pingflood.demoapp.data.dto.UserResponse;
 import it.pingflood.demoapp.data.dto.UserUpdate;
+import it.pingflood.demoapp.data.vo.FirstName;
+import it.pingflood.demoapp.data.vo.LastName;
 import it.pingflood.demoapp.service.UserService;
+import jakarta.validation.Valid;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -25,7 +28,7 @@ public class UserController {
   }
   
   @GetMapping("/{id}")
-  public ResponseEntity<UserResponse> getOneUserByID(@PathVariable Long id) {
+  public ResponseEntity<UserResponse> getOneUserByID(@PathVariable @Valid Long id) {
     return ResponseEntity.ok(userService.getUser(id));
   }
   
@@ -44,25 +47,25 @@ public class UserController {
   
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public ResponseEntity<UserResponse> createUser(@RequestBody UserCreate userCreate) {
+  public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserCreate userCreate) {
     return ResponseEntity.ok(userService.saveUser(userCreate));
   }
   
   @PostMapping(value = "/csv", headers = ("content-type=multipart/form-data"))
   @ResponseStatus(HttpStatus.CREATED)
-  public ResponseEntity<List<UserResponse>> createUserFromCSV(@RequestParam("file") MultipartFile file) throws Exception {
+  public ResponseEntity<List<UserResponse>> createUserFromCSV(@RequestParam("file") @Valid MultipartFile file) throws Exception {
     return ResponseEntity.ok(userService.saveFromCSV(file));
   }
   
   @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
-  public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @RequestBody UserUpdate userUpdate) {
+  public ResponseEntity<UserResponse> updateUser(@PathVariable @Valid Long id, @RequestBody @Valid UserUpdate userUpdate) {
     return ResponseEntity.ok(userService.updateUser(id, userUpdate));
   }
   
   @DeleteMapping("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public ResponseEntity<UserResponse> deleteUser(@PathVariable Long id) {
+  public ResponseEntity<UserResponse> deleteUser(@PathVariable @Valid Long id) {
     userService.deleteUser(id);
     return ResponseEntity.noContent().build();
   }

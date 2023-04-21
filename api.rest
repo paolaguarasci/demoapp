@@ -1,20 +1,20 @@
 ###
-GET http://localhost:8080/api/v1/user
+GET http://localhost:8081/api/v1/user
 
 ###
-GET http://localhost:8080/api/v1/user/search?firstname=2
+GET http://localhost:8081/api/v1/user/search?firstname=l
 
 ###
-GET http://localhost:8080/api/v1/user/search?lastname=s
+GET http://localhost:8081/api/v1/user/search?lastname=si
 
 ###
-GET http://localhost:8080/api/v1/user/search?firstname=asd&lastname=ss
+GET http://localhost:8081/api/v1/user/search?firstname=pa&lastname=ss
 
 ###
-GET http://localhost:8080/api/v1/user/1
+GET http://localhost:8081/api/v1/user/1
 
 ###
-POST http://localhost:8080/api/v1/user/csv
+POST http://localhost:8081/api/v1/user/csv
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -25,22 +25,22 @@ Content-Type: text/csv
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ###
-POST http://localhost:8080/api/v1/user
+POST http://localhost:8081/api/v1/user
 Content-Type: application/json
 
 {
-  "firstName": "a",
-  "lastName": "s",
-  "email": "d",
-  "addressCity": "d",
-  "addressLine1": "f",
-  "addressLine2": "f",
-  "addressPostalCode": "as",
-  "addressState": "fh"
+  "firstName": "Giovanni",
+  "lastName": "Rossi",
+  "email": "a@b.com",
+  "addressLine1": "Via dei Mille, 0",
+  "addressLine2": "test",
+  "addressPostalCode": "12345",
+  "addressCity": "Cosenza",
+  "addressState": "Italy"
 }
 
 ###
-PUT http://localhost:8080/api/v1/user/3
+PUT http://localhost:8081/api/v1/user/3
 Content-Type: application/json
 
 {
@@ -56,4 +56,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:8080/api/v1/user/2
+DELETE http://localhost:8081/api/v1/user/2

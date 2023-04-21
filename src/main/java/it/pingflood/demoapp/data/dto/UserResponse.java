@@ -13,4 +13,5 @@ public class UserResponse {
   public String addressLine2;
   public String addressPostalCode;
   public String addressCity;
+  public String addressState;
 }
