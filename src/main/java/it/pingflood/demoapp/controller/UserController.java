@@ -3,8 +3,6 @@ package it.pingflood.demoapp.controller;
 import it.pingflood.demoapp.data.dto.UserCreate;
 import it.pingflood.demoapp.data.dto.UserResponse;
 import it.pingflood.demoapp.data.dto.UserUpdate;
-import it.pingflood.demoapp.data.vo.FirstName;
-import it.pingflood.demoapp.data.vo.LastName;
 import it.pingflood.demoapp.service.UserService;
 import jakarta.validation.Valid;
 import lombok.SneakyThrows;

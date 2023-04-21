@@ -1,13 +1,12 @@
 package it.pingflood.demoapp.data.vo;
 
-import org.hibernate.validator.constraints.Length;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.executable.ValidateOnExecution;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import org.hibernate.validator.constraints.Length;
 
 @Value
 @Builder
