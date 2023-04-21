@@ -7,13 +7,21 @@ services:
       - 8080:8080
     depends_on:
       - database
+    networks:
+      - spring-mariadb
   database:
     image: "mariadb:latest"
     restart: always
-    ports:
-      - 3306:3306
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - spring-mariadb
     environment:
       MYSQL_DATABASE: demoapp
       MYSQL_USER: demoapp
       MYSQL_PASSWORD: demoapp
       MYSQL_ROOT_PASSWORD: demoapp
+volumes:
+  db-data:
+networks:
+  spring-mariadb:
