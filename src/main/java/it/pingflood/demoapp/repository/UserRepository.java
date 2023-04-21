@@ -1,11 +1,9 @@
-package it.pingflood.florencedemo.repository;
+package it.pingflood.demoapp.repository;
 
-import it.pingflood.florencedemo.data.User;
+import it.pingflood.demoapp.data.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
-
-}
+public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {}

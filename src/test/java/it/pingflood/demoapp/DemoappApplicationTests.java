@@ -1,10 +1,10 @@
-package it.pingflood.florencedemo;
+package it.pingflood.demoapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FlorencedemoApplicationTests {
+class DemoappApplicationTests {
   
   @Test
   void contextLoads() {

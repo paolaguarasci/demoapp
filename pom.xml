@@ -9,13 +9,13 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>it.pingflood</groupId>
-    <artifactId>florencedemo</artifactId>
+    <artifactId>userservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>florencedemo</name>
+    <name>demoapp</name>
     <description>Esercizio REST API</description>
     <properties>
         <java.version>20</java.version>
-        <start-class>it.pingflood.florencedemo.FlorencedemoApplication</start-class>
+        <start-class>it.pingflood.demoapp.DemoappApplication</start-class>
     </properties>
     <dependencies>
         <dependency>
@@ -26,6 +26,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>6.1.7.Final</version>
+        </dependency>
+
         <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
@@ -41,6 +49,12 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>

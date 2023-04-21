@@ -1,27 +1,14 @@
-package it.pingflood.florencedemo.data;
+package it.pingflood.demoapp.data;
 
-import java.util.Objects;
-
+import it.pingflood.demoapp.data.vo.Address;
+import it.pingflood.demoapp.data.vo.Email;
+import it.pingflood.demoapp.data.vo.FirstName;
+import it.pingflood.demoapp.data.vo.LastName;
+import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.Hibernate;
 
-import it.pingflood.florencedemo.data.vo.Address;
-import it.pingflood.florencedemo.data.vo.Email;
-import it.pingflood.florencedemo.data.vo.FirstName;
-import it.pingflood.florencedemo.data.vo.LastName;
-import jakarta.persistence.AttributeOverride;
-import jakarta.persistence.AttributeOverrides;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import java.util.Objects;
 
 @Getter
 @Setter

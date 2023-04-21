@@ -1,9 +1,7 @@
-package it.pingflood.florencedemo.data.dto;
+package it.pingflood.demoapp.data.dto;
 
-public class UserResponse {
-  
+public class UserUpdate {
   public Long id;
-  
   public String firstName;
   
   public String lastName;

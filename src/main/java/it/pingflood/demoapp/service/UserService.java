@@ -1,8 +1,8 @@
-package it.pingflood.florencedemo.service;
+package it.pingflood.demoapp.service;
 
-import it.pingflood.florencedemo.data.dto.UserCreate;
-import it.pingflood.florencedemo.data.dto.UserResponse;
-import it.pingflood.florencedemo.data.dto.UserUpdate;
+import it.pingflood.demoapp.data.dto.UserCreate;
+import it.pingflood.demoapp.data.dto.UserResponse;
+import it.pingflood.demoapp.data.dto.UserUpdate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -22,4 +22,7 @@ public interface UserService {
   List<UserResponse> saveUsersList(List<UserCreate> userCreateList);
   
   void deleteUser(Long id);
+  
+  
+  List<UserResponse> getUsersByFirstNameAndLastName(String firstName, String lastName);
 }

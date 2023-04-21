@@ -1,4 +1,4 @@
-package it.pingflood.florencedemo.data.vo;
+package it.pingflood.demoapp.data.vo;
 
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -7,11 +7,11 @@ import lombok.Value;
 @Value
 @Builder
 @NoArgsConstructor(force = true)
-public class FirstName {
-  String firstName;
+public class LastName {
+  String lastName;
   
-  public FirstName(String firstName) {
+  public LastName(String lastName) {
     // TODO Validation
-    this.firstName = firstName;
+    this.lastName = lastName;
   }
 }

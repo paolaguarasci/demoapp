@@ -1,10 +1,11 @@
-package it.pingflood.florencedemo.controller;
+package it.pingflood.demoapp.controller;
 
-import it.pingflood.florencedemo.data.dto.UserCreate;
-import it.pingflood.florencedemo.data.dto.UserResponse;
-import it.pingflood.florencedemo.data.dto.UserUpdate;
-import it.pingflood.florencedemo.service.UserService;
+import it.pingflood.demoapp.data.dto.UserCreate;
+import it.pingflood.demoapp.data.dto.UserResponse;
+import it.pingflood.demoapp.data.dto.UserUpdate;
+import it.pingflood.demoapp.service.UserService;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/user")
+@Slf4j
 public class UserController {
   
   private final UserService userService;
@@ -24,8 +26,12 @@ public class UserController {
   
   @GetMapping("/{id}")
   public ResponseEntity<UserResponse> getOneUserByID(@PathVariable Long id) {
-    
     return ResponseEntity.ok(userService.getUser(id));
+  }
+  
+  @GetMapping("/search")
+  public ResponseEntity<List<UserResponse>> getOneUserByID(@RequestParam(name = "firstname", required = false) String firstName, @RequestParam(name = "lastname", required = false) String lastName) {
+    return ResponseEntity.ok(userService.getUsersByFirstNameAndLastName(firstName, lastName));
   }
   
   
@@ -41,7 +47,7 @@ public class UserController {
   public ResponseEntity<UserResponse> createUser(@RequestBody UserCreate userCreate) {
     return ResponseEntity.ok(userService.saveUser(userCreate));
   }
-
+  
   @PostMapping(value = "/csv", headers = ("content-type=multipart/form-data"))
   @ResponseStatus(HttpStatus.CREATED)
   public ResponseEntity<List<UserResponse>> createUserFromCSV(@RequestParam("file") MultipartFile file) throws Exception {

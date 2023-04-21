@@ -1,17 +1,16 @@
-package it.pingflood.florencedemo.config;
+package it.pingflood.demoapp.config;
 
+import it.pingflood.demoapp.data.User;
+import it.pingflood.demoapp.data.vo.Address;
+import it.pingflood.demoapp.data.vo.Email;
+import it.pingflood.demoapp.data.vo.FirstName;
+import it.pingflood.demoapp.data.vo.LastName;
+import it.pingflood.demoapp.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import it.pingflood.florencedemo.data.User;
-import it.pingflood.florencedemo.data.vo.Address;
-import it.pingflood.florencedemo.data.vo.Email;
-import it.pingflood.florencedemo.data.vo.FirstName;
-import it.pingflood.florencedemo.data.vo.LastName;
-import it.pingflood.florencedemo.repository.UserRepository;
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component

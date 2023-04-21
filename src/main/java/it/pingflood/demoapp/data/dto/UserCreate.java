@@ -1,4 +1,4 @@
-package it.pingflood.florencedemo.data.dto;
+package it.pingflood.demoapp.data.dto;
 
 public class UserCreate {
   public String firstName;

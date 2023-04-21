@@ -1,4 +1,24 @@
-package it.pingflood.florencedemo.service.impl;
+package it.pingflood.demoapp.service.impl;
+
+import com.opencsv.CSVReader;
+import it.pingflood.demoapp.data.User;
+import it.pingflood.demoapp.data.dto.UserCreate;
+import it.pingflood.demoapp.data.dto.UserResponse;
+import it.pingflood.demoapp.data.dto.UserUpdate;
+import it.pingflood.demoapp.data.vo.Address;
+import it.pingflood.demoapp.data.vo.Email;
+import it.pingflood.demoapp.data.vo.FirstName;
+import it.pingflood.demoapp.data.vo.LastName;
+import it.pingflood.demoapp.repository.UserRepository;
+import it.pingflood.demoapp.repository.specs.UserSpecs;
+import it.pingflood.demoapp.service.UserService;
+import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.config.Configuration;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -7,27 +27,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.modelmapper.ModelMapper;
-import org.modelmapper.config.Configuration;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.opencsv.CSVReader;
-
-import it.pingflood.florencedemo.data.User;
-import it.pingflood.florencedemo.data.dto.UserCreate;
-import it.pingflood.florencedemo.data.dto.UserResponse;
-import it.pingflood.florencedemo.data.dto.UserUpdate;
-import it.pingflood.florencedemo.data.vo.Address;
-import it.pingflood.florencedemo.data.vo.Email;
-import it.pingflood.florencedemo.data.vo.FirstName;
-import it.pingflood.florencedemo.data.vo.LastName;
-import it.pingflood.florencedemo.repository.UserRepository;
-import it.pingflood.florencedemo.service.UserService;
-
 @Transactional
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
   
   private final UserRepository userRepository;
@@ -82,6 +84,30 @@ public class UserServiceImpl implements UserService {
     return userCreateList.stream().map(userCreate ->
       modelMapper.map(userRepository.save(modelMapper.map(userCreate, User.class)), UserResponse.class)
     ).collect(Collectors.toList());
+  }
+  
+  @Override
+  public List<UserResponse> getUsersByFirstNameAndLastName(String firstNameString, String lastNameString) {
+    
+    List<User> result;
+    if ((firstNameString != null && !firstNameString.trim().isEmpty()) && (lastNameString != null && !lastNameString.trim().isEmpty())) {
+      FirstName firstName = FirstName.builder().firstName(firstNameString).build();
+      LastName lastName = LastName.builder().lastName(lastNameString).build();
+      Specification<User> specFL = UserSpecs.firstNameOrlastNameContainsIgnoreCase(firstName, lastName);
+      result = userRepository.findAll(specFL);
+    } else if ((firstNameString != null && !firstNameString.trim().isEmpty())) {
+      FirstName firstName = FirstName.builder().firstName(firstNameString).build();
+      Specification<User> specF = UserSpecs.firstNameContainsIgnoreCase(firstName);
+      result = userRepository.findAll(specF);
+    } else if (lastNameString != null && !lastNameString.trim().isEmpty()) {
+      LastName lastName = LastName.builder().lastName(lastNameString).build();
+      Specification<User> specL = UserSpecs.lastNameContainsIgnoreCase(lastName);
+      result = userRepository.findAll(specL);
+    } else {
+      result = userRepository.findAll();
+    }
+    
+    return result.stream().map(user -> modelMapper.map(user, UserResponse.class)).collect(Collectors.toList());
   }
   
   @Override

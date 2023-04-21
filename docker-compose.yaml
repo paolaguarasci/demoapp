@@ -13,7 +13,7 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_DATABASE: florence
-      MYSQL_USER: florence
-      MYSQL_PASSWORD: florence
-      MYSQL_ROOT_PASSWORD: florence
+      MYSQL_DATABASE: demoapp
+      MYSQL_USER: demoapp
+      MYSQL_PASSWORD: demoapp
+      MYSQL_ROOT_PASSWORD: demoapp

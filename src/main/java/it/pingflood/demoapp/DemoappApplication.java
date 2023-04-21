@@ -1,13 +1,13 @@
-package it.pingflood.florencedemo;
+package it.pingflood.demoapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FlorencedemoApplication {
+public class DemoappApplication {
   
   public static void main(String[] args) {
-    SpringApplication.run(FlorencedemoApplication.class, args);
+    SpringApplication.run(DemoappApplication.class, args);
   }
   
 }

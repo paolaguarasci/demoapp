@@ -1,4 +1,4 @@
-package it.pingflood.florencedemo.data.vo;
+package it.pingflood.demoapp.data.vo;
 
 import lombok.Builder;
 import lombok.NoArgsConstructor;
