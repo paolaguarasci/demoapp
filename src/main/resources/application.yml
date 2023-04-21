@@ -10,7 +10,8 @@ spring:
 
 server:
   port: 8081
-
+  error:
+    include-stacktrace: ON_PARAM
 app:
   config:
     init:
